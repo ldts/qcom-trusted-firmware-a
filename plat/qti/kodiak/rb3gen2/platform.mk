@@ -98,7 +98,8 @@ BL31_SOURCES		+=	drivers/delay_timer/generic_delay_timer.c		\
 QTISECLIB_PATH ?=
 
 # QTISECLIB drivers
-BL31_SOURCES	+=			drivers/qti/sec_core/sec_core_stub.c
+BL31_SOURCES	+=			drivers/qti/sec_core/sec_core_stub.c \
+					drivers/qti/qtimer/qtimer_stub.c
 
 ifeq ($(QTISECLIB_PATH),)
 # if No lib then use stub implementation for qtiseclib interface
