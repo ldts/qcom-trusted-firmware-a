@@ -97,10 +97,17 @@ BL31_SOURCES		+=	drivers/delay_timer/generic_delay_timer.c		\
 # Override this on the command line to point to the qtiseclib library
 QTISECLIB_PATH ?=
 
-# QTISECLIB drivers
-BL31_SOURCES	+=			drivers/qti/sec_core/sec_core_stub.c \
-					drivers/qti/qtimer/qtimer_stub.c \
-					drivers/qti/watchdog/watchdog_stub.c
+# Note: When enabling this driver, you must:
+# - use a QTISECLIB with this functionality disabled.
+# - remove the corresponding stub
+#
+# include drivers/qti/accesscontrol/access_control.mk
+
+# QTISECLIB replacement drivers
+BL31_SOURCES	+=		drivers/qti/accesscontrol/access_control_stub.c \
+				drivers/qti/sec_core/sec_core_stub.c \
+				drivers/qti/qtimer/qtimer_stub.c \
+				drivers/qti/watchdog/watchdog_stub.c
 
 ifeq ($(QTISECLIB_PATH),)
 # if No lib then use stub implementation for qtiseclib interface
