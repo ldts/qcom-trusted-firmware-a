@@ -101,13 +101,12 @@ QTISECLIB_PATH ?=
 # - use a QTISECLIB with this functionality disabled.
 # - remove the corresponding stub
 #
-# include drivers/qti/accesscontrol/access_control.mk
+include drivers/qti/accesscontrol/access_control.mk
 
 # QTISECLIB replacement drivers
-BL31_SOURCES	+=		drivers/qti/accesscontrol/access_control_stub.c \
-				drivers/qti/sec_core/sec_core_stub.c \
-				drivers/qti/qtimer/qtimer_stub.c \
-				drivers/qti/watchdog/watchdog_stub.c
+BL31_SOURCES	+=		drivers/qti/sec_core/sec_core.c \
+				drivers/qti/qtimer/qtimer.c \
+				drivers/qti/watchdog/watchdog.c
 
 ifeq ($(QTISECLIB_PATH),)
 # if No lib then use stub implementation for qtiseclib interface
