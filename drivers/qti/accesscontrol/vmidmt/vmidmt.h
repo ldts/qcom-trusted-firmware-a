@@ -30,12 +30,13 @@
 #define ACC_VMID_IPA_UC_PIPE (0b1101) /* 13 */
 #define ACC_VMID_IPA_WIFI ACC_VMID_IPA_UC_PIPE
 #define ACC_VMID_IPA_UC (0b1110) /* 14 */
-#define ACC_VMID_IPA_GP (0b0000) /* 0  */
-#define ACC_VMID_IPA_FW (0b0010) /* 2  */
-#define ACC_VMID_IPA_PERIPH_1 (0b0001) /* 1  */
-#define ACC_VMID_IPA_PERIPH_2 (0b0011) /* 3  */
-#define ACC_VMID_IPA_PERIPH_3 (0b0100) /* 4  */
-#define ACC_VMID_IPA_PERIPH_4 (0b0101) /* 5  */
+/** VMIDMT values used from Olympic and further */
+#define ACC_VMID_IPA_GP       (0b0000) /* 0*/
+#define ACC_VMID_IPA_FW       (0b0010) /* 2*/
+#define ACC_VMID_IPA_PERIPH_1 (0b0001) /* 1*/
+#define ACC_VMID_IPA_PERIPH_2 (0b0011) /* 3*/
+#define ACC_VMID_IPA_PERIPH_3 (0b0100) /* 4*/
+#define ACC_VMID_IPA_PERIPH_4 (0b0101) /* 5*/
 
 /*
  * 9x35/9x45 IPA VMID behavior:
@@ -51,8 +52,8 @@
 
 /*
  */
-#define ACC_VMID_AP_GSI 0x16
-#define ACC_VMID_QUP_TZ 0x0
+#define ACC_VMID_QUP_TZ       0x0
+#define ACC_VMID_AP_GSI       22
 
 #define ACC_VMID_NOACCESS_BIT (1U << ACC_VMID_NOACCESS)
 #define ACC_VMID_VMID_0_BIT (1U << ACC_VMID_VMID_0)
