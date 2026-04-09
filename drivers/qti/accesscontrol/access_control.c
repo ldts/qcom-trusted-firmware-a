@@ -483,7 +483,6 @@ static void xpu_static_config(void)
 	xpu_lock_down_assets(msm_xpu_cfg, msm_xpu_cfg_count);
 	xpu_configure_tz();
 	dsbsy();
-
 	enable_interrupts(xpu_non_sec_intr_en_reg, xpu_sec_intr_en_reg);
 }
 
@@ -501,18 +500,20 @@ void qti_accesscontrol_init(void)
 	int rc;
 
 	rc = vmidmt_configure();
-	if (rc) {
-		ERROR("Error configuring the VMIDMT, fatal (%d)\n", rc);
+	if (rc)
 		goto error;
-	}
+
+	NOTICE("VMIDMT configured\n");
 
 	xpu_static_config();
 
+	NOTICE("XPU configured\n");
+
 	rc = xpu_register_interrupts();
-	if (rc) {
-		ERROR("Error registering the XPU interrupts, fatal\n");
+	if (rc)
 		goto error;
-	}
+
+	NOTICE("Access Control interrupts configured\n");
 
 	return;
 error:

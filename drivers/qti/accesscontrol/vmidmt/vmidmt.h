@@ -30,6 +30,7 @@
 #define ACC_VMID_IPA_UC_PIPE (0b1101) /* 13 */
 #define ACC_VMID_IPA_WIFI ACC_VMID_IPA_UC_PIPE
 #define ACC_VMID_IPA_UC (0b1110) /* 14 */
+#define ACC_VMID_IPA_AD (0b1111) /* 15*/
 #define ACC_VMID_IPA_GP (0b0000) /* 0  */
 #define ACC_VMID_IPA_FW (0b0010) /* 2  */
 #define ACC_VMID_IPA_PERIPH_1 (0b0001) /* 1  */
@@ -51,8 +52,17 @@
 
 /*
  */
-#define ACC_VMID_AP_GSI 0x16
-#define ACC_VMID_QUP_TZ 0x0
+#define ACC_VMID_QUP_TZ       0x0
+#define ACC_VMID_AP_GSI       22
+#define ACC_VMID_SB_DATA      22
+#define ACC_VMID_HOST         23
+#define ACC_VMID_GVM1         24
+#define ACC_VMID_TUI          24 /* VMID driven for Trusted UI use-case */
+#define ACC_VMID_GVM2         25
+#define ACC_VMID_OEM_VM       25 /* VMID driven for OEM use-case */
+#define ACC_VMID_GVM3         26
+#define ACC_VMID_GVM4         27
+#define ACC_VMID_SPSS         29
 
 #define ACC_VMID_NOACCESS_BIT (1U << ACC_VMID_NOACCESS)
 #define ACC_VMID_VMID_0_BIT (1U << ACC_VMID_VMID_0)

@@ -23,6 +23,9 @@
 #define ACC_VMIDMT_MEMTYPE_DEFAULT 0xFF
 #define ACC_VMIDMT_MEMTYPE_STRONGLY_ORDERED 0
 
+#define ACC_VMIDMT_STATIC_CONFIGURATION (1U << 0)
+#define ACC_VMIDMT_SCFG_FOR_SID         (1U << 1)
+
 struct vmidmt_err_pos_to_hal_map {
 	uint8_t bit_pos; /* Bit position in status register */
 	uint8_t vmidmt; /* Corresponding HAL VMIDMT index */

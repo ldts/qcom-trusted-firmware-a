@@ -39,7 +39,7 @@ COLD_BOOT_SINGLE_CPU			:=	1
 PROGRAMMABLE_RESET_ADDRESS		:=	1
 
 # Enable XPU bypass
-QTI_MSM_XPU_BYPASS			:=	1
+QTI_MSM_XPU_BYPASS			:=	0
 $(eval $(call add_define,QTI_MSM_XPU_BYPASS))
 
 # Enable the dynamic translation tables library
@@ -64,7 +64,6 @@ PLAT_INCLUDES		:=	-Iinclude/plat/common/					\
 include lib/xlat_tables_v2/xlat_tables.mk
 PLAT_BL_COMMON_SOURCES	+=	common/desc_image_load.c				\
 				drivers/qti/crypto/rng.c				\
-				drivers/qti/accesscontrol/xpu.c				\
 				lib/cpus/aarch64/cortex_a78c.S				\
 				lib/bl_aux_params/bl_aux_params.c			\
 				plat/common/aarch64/crash_console_helpers.S		\
@@ -100,8 +99,7 @@ BL31_SOURCES		+=	drivers/delay_timer/generic_delay_timer.c		\
 
 BL31_SOURCES	+=		drivers/qti/sec_core/sec_core_stub.c \
 				drivers/qti/qtimer/qtimer_stub.c \
-				drivers/qti/watchdog/watchdog_stub.c \
-				drivers/qti/accesscontrol/access_control_stub.c
+				drivers/qti/watchdog/watchdog_stub.c
 
 # Override this on the command line to point to the qtiseclib library
 QTISECLIB_PATH ?=
@@ -112,6 +110,9 @@ $(warning QTISECLIB_PATH is not provided while building, using stub implementati
 		Please refer to documentation for more details \
 		THIS FIRMWARE WILL NOT BOOT!)
 BL31_SOURCES	+=	plat/qti/qtiseclib/src/qtiseclib_interface_stub.c
+
+include drivers/qti/accesscontrol/access_control.mk
+
 else
 $(eval $(call add_define,QTISECLIB_PATH))
 # use library provided by QTISECLIB_PATH
